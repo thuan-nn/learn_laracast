@@ -29,6 +29,6 @@ class ContactController extends Controller
     public function blankImage(Request $request) {
         $email = $request->email ?? 'unknown';
         Log::alert('abc: ' . $email);
-        return response()->file(resource_path('chugau.jpg'));
+        return response() ->file(resource_path('chugau.jpg'));
     }
 }

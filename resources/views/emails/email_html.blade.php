@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    Vidiz!! em yeu anh! Nhung anh Will cu lam phien em hoai dut khua cho em di!!!!
-    <img src="https://a7ddaef8.ngrok.io/contact/image.jpg?email=vidizzbidizz" />
+    <p>chào danh lê</p>>
+    <img src="https://943fee07.ngrok.io/contact/image.jpg?email=vidizzbidizz" />
 </body>
 </html>

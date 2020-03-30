@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//cai nay cua anh will
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
-Route::get('contact/image.jpg', 'Api\ContactController@blankImage');
+use App\Events\OrderStatusUpdated;
+
+Route::get('/', 'HomeController@index');
+
+Route::get('/update', 'HomeController@update');
+
+//Route::get('contact/image.jpg', 'Api\ContactController@blankImage');

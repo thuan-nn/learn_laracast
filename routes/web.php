@@ -18,3 +18,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/update', 'HomeController@update');
 
 //Route::get('contact/image.jpg', 'Api\ContactController@blankImage');
+
+Route::get('/tasks', 'TaskController@index');
+
+Route::post('/tasks', 'TaskController@create');

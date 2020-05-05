@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TaskCreated;
 use App\Task;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,10 @@ class TaskController extends Controller
     }
 
     public function create() {
-        Task::forceCreate(\request(['body']));
+        $task = Task::forceCreate(request(['body']));
+
+        event(
+            (new TaskCreated($task))
+        );
     }
 }

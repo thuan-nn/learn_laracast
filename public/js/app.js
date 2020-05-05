@@ -1916,18 +1916,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      task: []
+      tasks: [],
+      newTask: ''
     };
   },
   created: function created() {
     var _this = this;
 
     axios.get('/tasks').then(function (response) {
-      return _this.task = response.data();
+      return _this.tasks = response.data;
     });
+    window.Echo.channel('tasks').listen('TaskCreated', function (_ref) {
+      var task = _ref.task;
+
+      _this.tasks.push(task.body);
+    });
+  },
+  methods: {
+    addTask: function addTask() {
+      axios.post('/tasks', {
+        body: this.newTask
+      });
+      this.tasks.push(this.newTask);
+      this.newTask = '';
+    }
   }
 });
 
@@ -47216,7 +47233,29 @@ var render = function() {
         return _c("li", { domProps: { textContent: _vm._s(task) } })
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.newTask,
+          expression: "newTask"
+        }
+      ],
+      attrs: { type: "text" },
+      domProps: { value: _vm.newTask },
+      on: {
+        blur: _vm.addTask,
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.newTask = $event.target.value
+        }
+      }
+    })
   ])
 }
 var staticRenderFns = []

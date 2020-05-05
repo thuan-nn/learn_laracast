@@ -15,10 +15,16 @@ use App\Events\OrderStatusUpdated;
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/update', 'HomeController@update');
+//Route::get('/update', 'HomeController@update');
 
 //Route::get('contact/image.jpg', 'Api\ContactController@blankImage');
 
 Route::get('/tasks', 'TaskController@index');
 
 Route::post('/tasks', 'TaskController@create');
+
+Route::get('/api/project/{project}', 'ProjectController@getTasks');
+
+Route::post('/api/project/{project}/tasks', 'ProjectController@createTasks');
+
+Route::get('/project/{project}', 'ProjectController@show');
